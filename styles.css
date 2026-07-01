@@ -1,11 +1,11 @@
 :root {
-  --bg: #161311;
-  --bg-alt: #1C1714;
-  --bg-bordeaux: #2A1416;
-  --bg-footer: #100D0B;
-  --card: #1C1714;
-  --copper: #B87333;
-  --copper-light: #D08B4C;
+  --bg: #0B0B0B;
+  --bg-alt: #161414;
+  --bg-red: #3A0D0E;
+  --bg-footer: #060505;
+  --card: #161414;
+  --gold: #C9A227;
+  --gold-light: #E3C567;
   --text: #F3EEE7;
   --text-warm: #E4CFC4;
   --text-muted: #C2B9AD;
@@ -47,7 +47,7 @@ body {
 a { color: inherit; }
 img { max-width: 100%; display: block; }
 
-::selection { background: var(--copper); color: var(--bg); }
+::selection { background: var(--gold); color: var(--bg); }
 
 .container {
   max-width: var(--container);
@@ -96,7 +96,7 @@ section {
 .nav-bg {
   position: absolute;
   inset: 0;
-  background: rgba(18, 15, 13, 0.82);
+  background: rgba(8, 7, 7, 0.82);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--hairline);
@@ -154,20 +154,20 @@ section {
   border: none;
   font-family: inherit;
 }
-.btn-copper {
+.btn-gold {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--bg);
-  background: var(--copper);
+  background: var(--gold);
   padding: 12px 22px;
   border-radius: var(--radius-sm);
   white-space: nowrap;
   transition: background .25s ease;
 }
-.btn-copper:hover { background: var(--copper-light); }
-.btn-copper.large { padding: 17px 34px; font-size: 14px; letter-spacing: 0.06em; }
+.btn-gold:hover { background: var(--gold-light); }
+.btn-gold.large { padding: 17px 34px; font-size: 14px; letter-spacing: 0.06em; }
 
 .btn-outline {
   font-size: 14px;
@@ -180,7 +180,7 @@ section {
   border-radius: var(--radius-sm);
   transition: border-color .25s ease, background .25s ease;
 }
-.btn-outline:hover { border-color: var(--copper); background: rgba(184, 115, 51, 0.08); }
+.btn-outline:hover { border-color: var(--gold); background: rgba(201, 162, 39, 0.08); }
 
 .nav-toggle {
   display: none;
@@ -229,7 +229,7 @@ section {
   border-bottom: 1px solid var(--hairline);
   color: var(--text);
 }
-.drawer .btn-copper {
+.drawer .btn-gold {
   margin-top: 20px;
   text-align: center;
   padding: 16px;
@@ -247,7 +247,7 @@ section {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(135deg, #2b241e, #171310 60%);
+  background: linear-gradient(135deg, #2b1414, #0d0a0a 60%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -260,12 +260,12 @@ section {
 }
 .hero-overlay-gradient {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(15,12,10,0.58) 0%, rgba(15,12,10,0.32) 40%, rgba(18,15,13,0.84) 82%, var(--bg) 100%);
+  background: linear-gradient(180deg, rgba(8,6,6,0.58) 0%, rgba(8,6,6,0.32) 40%, rgba(9,7,7,0.84) 82%, var(--bg) 100%);
   pointer-events: none;
 }
 .hero-overlay-glow {
   position: absolute; inset: 0; z-index: 1;
-  background: radial-gradient(115% 85% at 80% 8%, rgba(184,115,51,0.2) 0%, rgba(184,115,51,0) 52%);
+  background: radial-gradient(115% 85% at 80% 8%, rgba(201, 162, 39, 0.2) 0%, rgba(201, 162, 39, 0) 52%);
   pointer-events: none;
 }
 .hero-overlay-grain {
@@ -290,9 +290,9 @@ section {
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--copper);
+  color: var(--gold);
 }
-.eyebrow.on-dark { color: var(--copper-light); }
+.eyebrow.on-dark { color: var(--gold-light); }
 .hero-content .eyebrow { margin-bottom: 22px; }
 
 .hero-content h1 {
@@ -341,7 +341,7 @@ section {
   display: block;
   width: 1px;
   height: 44px;
-  background: linear-gradient(180deg, rgba(184,115,51,0.9), rgba(184,115,51,0));
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.9), rgba(201, 162, 39, 0));
 }
 
 /* ---------- Section heads ---------- */
@@ -382,7 +382,7 @@ h2 {
 
 .img-slot {
   width: 100%;
-  background: linear-gradient(135deg, #201a16, #150f0d);
+  background: linear-gradient(135deg, #1c1414, #0d0b0b);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -424,7 +424,7 @@ h2 {
 .step-num {
   font-family: var(--font-display);
   font-size: 40px;
-  color: var(--copper);
+  color: var(--gold);
   line-height: 1;
 }
 .wwd-step h3 {
@@ -450,12 +450,12 @@ h2 {
   margin-top: clamp(48px, 6vw, 84px);
 }
 .werkwijze-step {
-  border-top: 1px solid rgba(184, 115, 51, 0.4);
+  border-top: 1px solid rgba(201, 162, 39, 0.4);
   padding-top: 24px;
 }
 .werkwijze-step .step-num {
   font-size: 34px;
-  color: var(--copper-light);
+  color: var(--gold-light);
 }
 .werkwijze-step h3 {
   margin: 12px 0 10px;
@@ -504,7 +504,7 @@ h2 {
 /* ---------- Over ons ---------- */
 #over-ons {
   position: relative;
-  background: var(--bg-bordeaux);
+  background: var(--bg-red);
 }
 .over-ons-grid {
   max-width: var(--container);
@@ -526,7 +526,7 @@ h2 {
 .pull-quote {
   margin: 34px 0 0;
   padding-left: 22px;
-  border-left: 2px solid var(--copper);
+  border-left: 2px solid var(--gold);
   font-family: var(--font-display);
   font-style: italic;
   font-size: 24px;
@@ -537,7 +537,7 @@ h2 {
   margin: 14px 0 0;
   font-size: 14px;
   letter-spacing: 0.04em;
-  color: #C6A79B;
+  color: var(--gold-light);
 }
 
 /* ---------- Aanbod ---------- */
@@ -556,7 +556,7 @@ h2 {
   transition: border-color .3s ease, transform .3s ease;
 }
 .offer-card:hover {
-  border-color: rgba(184, 115, 51, 0.5);
+  border-color: rgba(201, 162, 39, 0.5);
   transform: translateY(-4px);
 }
 .offer-card .img-slot { border-radius: 0; }
@@ -714,7 +714,7 @@ h2 {
 }
 .field textarea { resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus {
-  border-color: var(--copper);
+  border-color: var(--gold);
 }
 .submit-btn {
   margin-top: 4px;
@@ -724,18 +724,18 @@ h2 {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--bg);
-  background: var(--copper);
+  background: var(--gold);
   border: none;
   padding: 16px 34px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: background .25s ease;
 }
-.submit-btn:hover { background: var(--copper-light); }
+.submit-btn:hover { background: var(--gold-light); }
 
 .success-panel {
   background: var(--card);
-  border: 1px solid rgba(184, 115, 51, 0.4);
+  border: 1px solid rgba(201, 162, 39, 0.4);
   border-radius: var(--radius);
   padding: clamp(32px, 5vw, 56px);
   height: 100%;
@@ -748,7 +748,7 @@ h2 {
 .success-panel .headline {
   font-family: var(--font-display);
   font-size: 44px;
-  color: var(--copper);
+  color: var(--gold);
   line-height: 1;
 }
 .success-panel p {
@@ -830,6 +830,6 @@ h2 {
 
 /* Visible keyboard focus for links/buttons beyond form fields */
 a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--copper);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
