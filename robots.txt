@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.samax.nl/sitemap.xml
+Sitemap: https://samax-website.vercel.app/sitemap.xml

@@ -87,6 +87,30 @@ section {
   transform: none;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+  .reveal.in-view { animation: none; }
+  * { scroll-behavior: auto !important; }
+}
+
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 12px;
+  z-index: 200;
+  background: var(--gold);
+  color: var(--bg);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: top .2s ease;
+}
+.skip-link:focus { top: 12px; }
+
+body.drawer-open { overflow: hidden; }
+
 /* ---------- Nav ---------- */
 .site-header {
   position: fixed;
@@ -201,7 +225,11 @@ section {
   width: 20px;
   height: 1.5px;
   background: var(--text);
+  transition: transform .25s ease, opacity .25s ease;
 }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 @media (max-width: 899px) {
   .nav-desktop { display: none; }
@@ -217,6 +245,7 @@ section {
   display: none;
   flex-direction: column;
   gap: 8px;
+  overflow-y: auto;
   animation: samaxFade .3s ease both;
 }
 .drawer.open { display: flex; }
@@ -247,16 +276,10 @@ section {
   position: absolute;
   inset: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   background: linear-gradient(135deg, #2b1414, #0d0a0a 60%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.hero-media .img-slot-label {
-  color: rgba(243, 238, 231, 0.35);
-  font-size: 13px;
-  padding: 0 24px;
 }
 .hero-overlay-gradient {
   position: absolute; inset: 0; z-index: 1;
@@ -344,6 +367,15 @@ section {
   background: linear-gradient(180deg, rgba(201, 162, 39, 0.9), rgba(201, 162, 39, 0));
 }
 
+/* Keep the primary CTA on-screen on shorter laptop viewports (~700-820px tall) */
+@media (max-height: 820px) {
+  .hero-content h1 { font-size: clamp(36px, 6vw, 72px); }
+  .hero-sub { margin-top: 18px; }
+  .hero-ctas { margin-top: 26px; }
+  .hero-content { padding-bottom: clamp(48px, 6vw, 72px); }
+  .scroll-cue { display: none; }
+}
+
 /* ---------- Section heads ---------- */
 h2 {
   margin: 0;
@@ -382,28 +414,10 @@ h2 {
 
 .img-slot {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   background: linear-gradient(135deg, #1c1414, #0d0b0b);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   border-radius: var(--radius);
-  position: relative;
-  overflow: hidden;
-}
-.img-slot::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(45deg, rgba(243,238,231,0.04) 0 2px, transparent 2px 14px);
-}
-.img-slot .img-slot-label {
-  position: relative;
-  z-index: 1;
-  font-size: 13px;
-  color: var(--text-faint);
-  padding: 0 24px;
-  line-height: 1.5;
 }
 .img-slot.ratio-4-5 { aspect-ratio: 4 / 5; }
 .img-slot.ratio-1-1 { aspect-ratio: 1 / 1; }
@@ -445,10 +459,12 @@ h2 {
 #werkwijze { background: var(--bg-alt); }
 .werkwijze-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: clamp(28px, 4vw, 56px);
   margin-top: clamp(48px, 6vw, 84px);
 }
+@media (max-width: 560px) { .werkwijze-grid { grid-template-columns: 1fr; } }
+@media (min-width: 900px) { .werkwijze-grid { grid-template-columns: repeat(4, 1fr); } }
 .werkwijze-step {
   border-top: 1px solid rgba(201, 162, 39, 0.4);
   padding-top: 24px;
@@ -544,10 +560,12 @@ h2 {
 #aanbod { background: var(--bg); }
 .aanbod-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: clamp(20px, 2.5vw, 32px);
   margin-top: clamp(48px, 6vw, 80px);
 }
+@media (max-width: 560px) { .aanbod-grid { grid-template-columns: 1fr; } }
+@media (min-width: 900px) { .aanbod-grid { grid-template-columns: repeat(4, 1fr); } }
 .offer-card {
   background: var(--card);
   border: 1px solid rgba(243, 238, 231, 0.06);
@@ -825,7 +843,7 @@ h2 {
   justify-content: space-between;
   gap: 12px;
   font-size: 13px;
-  color: var(--text-faint-2);
+  color: #9A9288;
 }
 
 /* Visible keyboard focus for links/buttons beyond form fields */
